@@ -24,6 +24,17 @@ sudo chown apache:apache /var/www/html/images/profile.png
 sudo chown apache:apache /var/www/html/images
 Check Apache Configuration: Ensure that the Apache configuration allows access to the /var/www/html/images/ directory.
 
+3. Check Apache Configuration for Directory Access
+Make sure the Apache configuration allows access to the /var/www/html/images/ directory. Check the configuration file (usually /etc/httpd/conf/httpd.conf or /etc/httpd/conf.d/), and ensure the directory block allows access.
+
+Look for a <Directory> block like this in your Apache configuration:
+apache
+Copy code
+<Directory "/var/www/html">
+    AllowOverride None
+    Require all granted
+</Directory>
+
 Check .htaccess File: Remove or adjust any restrictive rules like Deny from all or Require all denied.
 
 Check SELinux: Temporarily disable SELinux if it’s enforcing:
